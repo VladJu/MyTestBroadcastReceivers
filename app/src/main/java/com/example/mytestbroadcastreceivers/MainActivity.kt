@@ -7,20 +7,22 @@ import android.os.Bundle
 
 class MainActivity : AppCompatActivity() {
 
-    private val receiver= MyReceiver()
+//    private val receiver= MyReceiver()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         //чтобы реагировал на сообщение которые нам нужны
-        val intentFilter = IntentFilter(Intent.ACTION_BATTERY_LOW)
-        registerReceiver(receiver,intentFilter)
+//        val intentFilter = IntentFilter().apply {
+//            addAction(Intent.ACTION_BATTERY_LOW)
+//            addAction(Intent.ACTION_AIRPLANE_MODE_CHANGED)
+//        }
+        //dynamic registration
+//        registerReceiver(receiver,intentFilter)
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        //чтобы не было утечек памяти
-        //отписку делать в противоположном методе onStart - onStop/ onCreate - onDestroy и тд
-        unregisterReceiver(receiver)
+//        unregisterReceiver(receiver)
     }
 }
